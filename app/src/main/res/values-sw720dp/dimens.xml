@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Screen Padding -->
+    <dimen name="screen_padding">40dp</dimen>
+
+    <!-- Margins -->
+    <dimen name="margin_small">14dp</dimen>
+    <dimen name="margin_medium">24dp</dimen>
+    <dimen name="margin_large">36dp</dimen>
+    <dimen name="margin_xlarge">50dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_small">14dp</dimen>
+    <dimen name="padding_medium">24dp</dimen>
+    <dimen name="padding_large">36dp</dimen>
+    <dimen name="padding_xlarge">50dp</dimen>
+
+    <!-- Input Fields -->
+    <dimen name="input_height">70dp</dimen>
+    <dimen name="input_padding">22dp</dimen>
+
+    <!-- Buttons -->
+    <dimen name="button_height">66dp</dimen>
+    <dimen name="button_height_large">74dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_small">18sp</dimen>
+    <dimen name="text_medium">20sp</dimen>
+    <dimen name="text_large">24sp</dimen>
+    <dimen name="text_xlarge">28sp</dimen>
+</resources>

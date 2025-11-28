@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSelectPan, btnSelectAadhaar, btnSubmit;
     private TextView tvPanFileName, tvAadhaarFileName;
     private ProgressBar progressBar;
+    private RelativeLayout loadingOverlay;
+    private TextView tvMarquee;
 
     private Uri panFileUri = null;
     private Uri aadhaarFileUri = null;
@@ -49,9 +52,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Setup custom centered action bar
+        setupActionBar();
+
         initializeViews();
         setupFilePickers();
         setupClickListeners();
+    }
+
+    private void setupActionBar() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowCustomEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setCustomView(R.layout.custom_action_bar);
+        }
     }
 
     private void initializeViews() {
@@ -68,7 +82,11 @@ public class MainActivity extends AppCompatActivity {
         tvAadhaarFileName = findViewById(R.id.tvAadhaarFileName);
 
         progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.GONE);
+        loadingOverlay = findViewById(R.id.loadingOverlay);
+
+        // Initialize and start marquee
+        tvMarquee = findViewById(R.id.tvMarquee);
+        tvMarquee.setSelected(true);
     }
 
     private void setupFilePickers() {
@@ -182,8 +200,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Show loading
-        progressBar.setVisibility(View.VISIBLE);
         btnSubmit.setEnabled(false);
+        loadingOverlay.setVisibility(View.VISIBLE);
 
         // Get files
         File panFile = FileUtils.getFileFromUri(this, panFileUri);
@@ -191,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (panFile == null || aadhaarFile == null) {
             Toast.makeText(this, "Error reading files", Toast.LENGTH_SHORT).show();
-            progressBar.setVisibility(View.GONE);
+            loadingOverlay.setVisibility(View.GONE);
             btnSubmit.setEnabled(true);
             return;
         }
@@ -213,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                progressBar.setVisibility(View.GONE);
+                loadingOverlay.setVisibility(View.GONE);
                 btnSubmit.setEnabled(true);
 
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
@@ -230,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
+                loadingOverlay.setVisibility(View.GONE);
                 btnSubmit.setEnabled(true);
                 Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 t.printStackTrace();

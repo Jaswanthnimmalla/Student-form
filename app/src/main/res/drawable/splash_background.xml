@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Gradient Background -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#1976D2"
+                android:centerColor="#2196F3"
+                android:endColor="#42A5F5"
+                android:angle="135"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- Logo in Center -->
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/student_form_logo" />
+    </item>
+
+</layer-list>

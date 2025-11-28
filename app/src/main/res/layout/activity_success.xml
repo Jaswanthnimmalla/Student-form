@@ -1,72 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="32dp"
-    android:background="#FFFFFF">
+    android:background="@drawable/gradient_background">
 
-    <!-- Success Icon -->
-    <ImageView
-        android:id="@+id/ivSuccessIcon"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@android:drawable/ic_dialog_info"
-        android:tint="#4CAF50"
-        android:layout_marginBottom="32dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <!-- Success Title -->
-    <TextView
-        android:id="@+id/tvSuccessTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Success!"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="#4CAF50"
-        android:layout_marginBottom="16dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="32dp">
 
-    <!-- Customer Name -->
-    <TextView
-        android:id="@+id/tvCustomerName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thank you, Customer Name"
-        android:textSize="20sp"
-        android:textColor="#333333"
-        android:layout_marginBottom="8dp" />
+            <!-- Success Icon Card -->
+            <androidx.cardview.widget.CardView android:id="@+id/checkmarkCard"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="32dp"
+                android:elevation="12dp"
+                app:cardCornerRadius="70dp"
+                android:background="@android:color/white">
 
-    <!-- Success Message -->
-    <TextView
-        android:id="@+id/tvMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Student registration completed successfully!"
-        android:textSize="16sp"
-        android:textColor="#666666"
-        android:gravity="center"
-        android:layout_marginBottom="8dp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white">
 
-    <!-- Info Message -->
-    <TextView
-        android:id="@+id/tvInfoMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Files saved and PDF generated"
-        android:textSize="14sp"
-        android:textColor="#999999"
-        android:gravity="center"
-        android:layout_marginBottom="32dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✓"
+                        android:textSize="80sp"
+                        android:textStyle="bold"
+                        android:textColor="#4CAF50"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
-    <!-- Back to Home Button -->
-    <Button
-        android:id="@+id/btnBackToHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back to Home"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
-        android:backgroundTint="#1976D2" />
+            <!-- Success Title -->
+            <TextView
+                android:id="@+id/tvSuccessTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Success!"
+                android:textSize="42sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="16dp" />
 
-</LinearLayout>
+            <!-- Main Content Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/contentCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:elevation="8dp"
+                app:cardCornerRadius="16dp"
+                android:background="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="32dp"
+                    android:background="@android:color/white">
+
+                    <!-- Customer Name -->
+                    <TextView
+                        android:id="@+id/tvCustomerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thank you, Customer Name"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="60dp"
+                        android:layout_height="4dp"
+                        android:background="#4CAF50"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Success Message -->
+                    <TextView
+                        android:id="@+id/tvMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Student registration completed successfully!"
+                        android:textSize="18sp"
+                        android:textColor="#666666"
+                        android:gravity="center"
+                        android:lineSpacingExtra="4dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Info Section -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#F5F5F5"
+                        android:padding="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✓ Data saved to database"
+                            android:textSize="15sp"
+                            android:textColor="#333333"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✓ Documents uploaded successfully"
+                            android:textSize="15sp"
+                            android:textColor="#333333"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/tvInfoMessage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✓ PDF generated and saved"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+                    </LinearLayout>
+
+                    <!-- Back to Home Button -->
+                    <Button
+                        android:id="@+id/btnBackToHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="BACK TO HOME"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:background="#1976D2" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

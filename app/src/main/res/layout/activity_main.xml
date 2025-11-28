@@ -1,191 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="#FFFFFF">
+    android:background="#F8F9FA">
 
-    <LinearLayout
+    <!-- Main Content ScrollView -->
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="#F8F9FA"
+        android:scrollbars="vertical">
 
-        <!-- Title -->
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Student Registration Form"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#1976D2"
-            android:layout_gravity="center"
-            android:layout_marginBottom="32dp" />
-
-        <!-- Customer Name -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Customer Name"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_marginBottom="4dp" />
-
-        <EditText
-            android:id="@+id/etCustomerName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter customer name"
-            android:inputType="textPersonName"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="16dp" />
-
-        <!-- ID Number -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ID Number"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_marginBottom="4dp" />
-
-        <EditText
-            android:id="@+id/etIdNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter ID number"
-            android:inputType="text"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Email -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Email Address"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_marginBottom="4dp" />
-
-        <EditText
-            android:id="@+id/etEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter email address"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Phone -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Phone Number"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_marginBottom="4dp" />
-
-        <EditText
-            android:id="@+id/etPhoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter phone number"
-            android:inputType="phone"
-            android:maxLength="10"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="24dp" />
-
-        <!-- PAN File Selection -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@android:drawable/dialog_holo_light_frame"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp">
+            android:padding="@dimen/screen_padding">
 
+            <!-- Marquee Text - Plain without background -->
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PAN Document (90-120 KB)"
-                android:textSize="14sp"
-                android:textColor="#666666"
-                android:layout_marginBottom="8dp" />
-
-            <Button
-                android:id="@+id/btnSelectPan"
+                android:id="@+id/tvMarquee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Select PAN File" />
+                android:text="📝 Student Registration Portal - Fill Your Details Securely and Submit Documents Online - Quick and Easy Process 📝"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                android:textColor="#1976D2"
+                android:gravity="center"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:freezesText="true"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_medium" />
 
-            <TextView
-                android:id="@+id/tvPanFileName"
-                android:layout_width="wrap_content"
+            <!-- Form Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No file selected"
-                android:textSize="12sp"
-                android:textColor="#999999"
-                android:visibility="gone"
-                android:layout_marginTop="8dp" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <!-- Aadhaar File Selection -->
+                <!-- Customer Name with Icon -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="👤 Full Name"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    android:textColor="#2C3E50"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginStart="4dp" />
+
+                <EditText
+                    android:id="@+id/etCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/input_height"
+                    android:hint="Enter your full name"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/input_padding"
+                    android:background="@drawable/input_field_enhanced"
+                    android:textSize="@dimen/text_medium"
+                    android:textColor="#1A1A1A"
+                    android:textColorHint="#90A4AE"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:elevation="1dp" />
+
+                <!-- ID Number with Icon -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🆔 ID Number"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    android:textColor="#2C3E50"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginStart="4dp" />
+
+                <EditText
+                    android:id="@+id/etIdNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/input_height"
+                    android:hint="Enter your ID number"
+                    android:inputType="text"
+                    android:padding="@dimen/input_padding"
+                    android:background="@drawable/input_field_enhanced"
+                    android:textSize="@dimen/text_medium"
+                    android:textColor="#1A1A1A"
+                    android:textColorHint="#90A4AE"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:elevation="1dp" />
+
+                <!-- Email with Icon -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📧 Email Address"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    android:textColor="#2C3E50"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginStart="4dp" />
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/input_height"
+                    android:hint="your.email@example.com"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/input_padding"
+                    android:background="@drawable/input_field_enhanced"
+                    android:textSize="@dimen/text_medium"
+                    android:textColor="#1A1A1A"
+                    android:textColorHint="#90A4AE"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:elevation="1dp" />
+
+                <!-- Phone Number with Icon -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📱 Phone Number"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    android:textColor="#2C3E50"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginStart="4dp" />
+
+                <EditText
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/input_height"
+                    android:hint="Enter 10-digit phone number"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:padding="@dimen/input_padding"
+                    android:background="@drawable/input_field_enhanced"
+                    android:textSize="@dimen/text_medium"
+                    android:textColor="#1A1A1A"
+                    android:textColorHint="#90A4AE"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:elevation="1dp" />
+
+                <!-- Documents Section Header -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📎 Upload Documents"
+                    android:textSize="@dimen/text_large"
+                    android:textStyle="bold"
+                    android:textColor="#2C3E50"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginStart="4dp" />
+
+                <!-- PAN Document -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📄 PAN Card (90-120 KB)"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    android:textColor="#2C3E50"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginStart="4dp" />
+
+                <Button
+                    android:id="@+id/btnSelectPan"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:text="📤 Choose PAN File"
+                    android:textSize="@dimen/text_medium"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textColor="#1976D2"
+                    android:background="@drawable/button_outlined_blue"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:elevation="1dp" />
+
+                <TextView
+                    android:id="@+id/tvPanFileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No file selected"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="#5F6368"
+                    android:textStyle="italic"
+                    android:visibility="visible"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginStart="8dp" />
+
+                <!-- Aadhaar Document -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📄 Aadhaar Card"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    android:textColor="#2C3E50"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginStart="4dp" />
+
+                <Button
+                    android:id="@+id/btnSelectAadhaar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:text="📤 Choose Aadhaar File"
+                    android:textSize="@dimen/text_medium"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textColor="#1976D2"
+                    android:background="@drawable/button_outlined_blue"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:elevation="1dp" />
+
+                <TextView
+                    android:id="@+id/tvAadhaarFileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No file selected"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="#5F6368"
+                    android:textStyle="italic"
+                    android:visibility="visible"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="@dimen/margin_large" />
+
+                <!-- Submit Button -->
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height_large"
+                    android:text="✅ Submit Registration"
+                    android:textSize="@dimen/text_large"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/button_submit_modern"
+                    android:elevation="4dp"
+                    android:layout_marginBottom="@dimen/margin_large" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Loading Overlay (centered on screen) -->
+    <RelativeLayout
+        android:id="@+id/loadingOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#DD000000"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true">
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@android:drawable/dialog_holo_light_frame"
-            android:padding="16dp"
-            android:layout_marginBottom="24dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Aadhaar Document"
-                android:textSize="14sp"
-                android:textColor="#666666"
-                android:layout_marginBottom="8dp" />
-
-            <Button
-                android:id="@+id/btnSelectAadhaar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Select Aadhaar File" />
-
-            <TextView
-                android:id="@+id/tvAadhaarFileName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No file selected"
-                android:textSize="12sp"
-                android:textColor="#999999"
-                android:visibility="gone"
-                android:layout_marginTop="8dp" />
-        </LinearLayout>
-
-        <!-- Submit Button -->
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Submit Form"
-            android:textSize="16sp"
-            android:background="#4CAF50"
-            android:textColor="#FFFFFF" />
-
-        <!-- Loading Progress -->
-        <ProgressBar
-            android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:visibility="gone" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/padding_xlarge">
 
-    </LinearLayout>
-</ScrollView>
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:indeterminate="true"
+                android:indeterminateTint="#FFFFFF"
+                android:indeterminateTintMode="src_in" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submitting..."
+                android:textSize="@dimen/text_large"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="@dimen/margin_medium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please wait"
+                android:textSize="@dimen/text_medium"
+                android:textColor="#E3F2FD"
+                android:layout_marginTop="@dimen/margin_small" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
